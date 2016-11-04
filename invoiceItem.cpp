@@ -1,5 +1,8 @@
 #include <iostream>
+#include <iomanip>
+#include <cstdio>
 #include "invoiceItem.hpp"
+
 
 using namespace std;
 
@@ -17,6 +20,11 @@ int invoiceItem::getId(void)
     return this->id;
 }
 
+float invoiceItem::getTotal(void)
+{
+    return this->total;
+}
+
 void invoiceItem::setQuantity(int quantity)
 {
     this->quantity = this->quantity + quantity;
@@ -24,12 +32,14 @@ void invoiceItem::setQuantity(int quantity)
 
 void invoiceItem::printItem(void)
 {
-    cout << "Preces nosaukums: " << this->name << endl;
-    cout << "Preces daudzums: " << this->quantity << endl;
+    printf("%10d%15s%10.2f%9.0f%%%10d%10.2f", this->getId(), this->name.c_str(),
+           this->price, this->discount, this->quantity, this->totalPrice());
+    printf("\n");
 }
 
-void invoiceItem::totalPrice(void)
+float invoiceItem::totalPrice(void)
 {
     productDiscount = ((this->price) * (this->quantity)) * ((this->discount) / 100);
     total = ((this->price) * (this->quantity)) - (this->productDiscount);
+    return total;
 }

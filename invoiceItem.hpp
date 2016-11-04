@@ -10,13 +10,13 @@ private:
     int quantity;
     float price;
     float discount;
-    int total;
+    float total;
 	float productDiscount;
 public:
     invoiceItem(int id, string name, int quantity, float price, float discount);
     int getId(void);
+    float getTotal(void);
     void setQuantity(int quantity);
     void printItem(void);
-    void totalPrice(void);
-
+    float totalPrice(void);
 };

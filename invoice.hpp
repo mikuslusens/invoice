@@ -2,8 +2,6 @@
 #include <vector>
 #include "invoiceItem.hpp"
 
-//#include "product.hpp"
-
 using namespace std;
 
 class Product;
@@ -16,7 +14,12 @@ public:
 	string reciever;
 	string sender;
 	float invoiceDiscount;
+	float invoiceTotal;
+	float invoiceTotalDiscount;
 	vector<invoiceItem*> invProdList;
 	void addProduct(vector<Product*> prodList, int id, int quantity);
+	void removeProduct(int id);
+	float sumInvoiceTotal(void);
+	float sumInvoiceTotalDiscount(void);
 	void printInvoice(void);
 };
